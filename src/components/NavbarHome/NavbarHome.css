@@ -1,0 +1,56 @@
+.navbarHome {
+    border-style: solid;
+    border-width: 3px;
+    border-left: 0px;
+    border-right: 0px;
+    min-width: 669px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+
+.navbar-nav {
+    margin-left: 50px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+.dropdown2 {
+    margin-left: 100px;
+    display: inline-block;
+}
+
+.dropdown3 {
+    margin-left: 100px;
+    display: inline-block;
+}
+
+.authentication {
+    float: right;
+    right: 0px;
+}
+
+.logo {
+    font-family: smoke;
+    font-size: 80px;
+    color: rgb(183, 63, 63);
+    line-height: 0px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
+
+.logo:hover {
+    color: red;
+}
+
+.dropdown-menu {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: 'smoke';
+    src: url('../../assets/smoke.ttf') format('truetype')
+}

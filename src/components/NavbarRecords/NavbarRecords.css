@@ -1,0 +1,28 @@
+.containerRecords{
+    border-style:solid;
+    border-left: 0px;
+    border-right:0px;
+    background-color: black;
+    font-size: xx-large;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    height: 100px;
+    list-style-type: none;
+    
+    
+}
+
+.return{
+    font-size:medium;
+    background-color: rgb(255, 255, 255);
+    margin-left: 40px;
+    height: 50px;
+    list-style-type: none;
+
+
+}
+
+.bottom {
+    top: 80px;
+    position:relative;
+}
