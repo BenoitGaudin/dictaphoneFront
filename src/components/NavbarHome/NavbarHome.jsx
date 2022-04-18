@@ -44,7 +44,7 @@ const NavbarHome = () => {
                   <a className="nav-link dropdown-toggle-ls text-dark  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                     LOGIN
                   </a>
-                  <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <div className="dropdown-menu dropdown-menu-right border-dark" aria-labelledby="navbarDropdownMenuLink">
                     <a className="dropdown-item" href="#">
                       <div class="form-group">
                         <label for="exampleInputEmail1">EMAIL ADDRESS</label>

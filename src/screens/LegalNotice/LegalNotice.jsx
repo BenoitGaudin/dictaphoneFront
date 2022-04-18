@@ -11,10 +11,10 @@ const LegalNotice = () => {
     return (
         <div>
 
-
-            <div className="dictaphoneLegalNotice"><Link to="/">
-                <button type="button" class="big-logo btn -lg " >dictaphone</button>
-            </Link>
+            <div class="text-center">
+                <Link to="/">
+                    <button type="button" class="big-logo btn -lg " >dictaphone</button>
+                </Link>
             </div>
             <div className='tableLegalNotice'>
 

@@ -1,59 +1,53 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import "./Contact.css";
+class Contact extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            message: ''
+        }
+    }
 
-import "./Contact.css"
-
-
-const Contact = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    return (
-        <div>
-
-            <div className='tableContact'>
-                <div className="form-group">
-                    <label htmlFor="name">
-                        YOUR NAME
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </label>
+    render() {
+        return (
+            <div className="App">
+                <div className="tableContact">
+                    <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Email address</label>
+                            <input type="email" className="form-control" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="message">Message</label>
+                            <textarea className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="email">
-                        YOUR EMAIL
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="message">
-                        YOUR MESSAGE
-                        <textarea
-                            type="text"
-                            id="message"
-                            name="message"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                        />
-                    </label>
-                </div>
-                <button type="submit">SEND</button>
+            </div>
+        );
+    }
 
+    onNameChange(event) {
+        this.setState({ name: event.target.value })
+    }
 
-            </div >
-        </div>
-    );
-};
+    onEmailChange(event) {
+        this.setState({ email: event.target.value })
+    }
+
+    onMessageChange(event) {
+        this.setState({ message: event.target.value })
+    }
+
+    handleSubmit(event) {
+    }
+}
 
 export default Contact;
