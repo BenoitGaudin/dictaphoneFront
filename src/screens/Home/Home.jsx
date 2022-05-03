@@ -24,7 +24,7 @@ const Home = () => {
             <NavbarHome />
 
 
-            <div className="animate__animated animate__bounce ">
+            <div className="animate__animated animate__bounce">
 
                 <div className="imageBordure responsive">
 

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NavbarHome.css";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar";
 
-import "./NavbarHome.css"
+
+
 
 
 
@@ -12,6 +14,10 @@ import "./NavbarHome.css"
 
 
 const NavbarHome = () => {
+
+
+
+
   return (
     <div className="navbarHome">
       <nav className="navbar navbar-expand-lg navbar-light ">
@@ -42,32 +48,21 @@ const NavbarHome = () => {
               <div className="dropdown2 ">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle-ls text-dark  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                    LOGIN
+                    SIGN IN
                   </a>
                   <div className="dropdown-menu dropdown-menu-right border-dark" aria-labelledby="navbarDropdownMenuLink">
                     <a className="dropdown-item" href="#">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">EMAIL ADDRESS</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      <div className="registration">
+
                       </div>
                     </a>
 
                     <a className="dropdown-item" href="#">
 
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">PASSWORD</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                      </div>
+                      <Navbar />
 
                     </a>
-                    <a className="dropdown-item" href="#">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </a>
+
                   </div>
 
                 </li>
@@ -76,13 +71,17 @@ const NavbarHome = () => {
 
               <div className="dropdown3">
                 <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle text-dark  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-                    SIGN OUT
+                  <a className="nav-link dropdown-toggle-ls text-dark  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                    LOGIN
                   </a>
                   <div className="dropdown-menu border-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Another action</a>
-                    <a className="dropdown-item" href="#">Something else here</a>
+                    <a className="dropdown-item" href="#">
+                      <div className="login">
+
+
+                      </div>
+                    </a>
+
                   </div>
                 </li>
               </div>
