@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./NavbarHome.css";
 import { Link } from "react-router-dom";
-import Navbar from "../Navbar";
+import Register from "../Register";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Login from "../Login";
+import UserInfo from "../UserInfo";
+
 
 
 
@@ -15,7 +20,16 @@ import Navbar from "../Navbar";
 
 const NavbarHome = () => {
 
+  const history = useNavigate();
 
+  const Logout = async () => {
+    try {
+      await axios.delete('/logout');
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
   return (
@@ -44,6 +58,10 @@ const NavbarHome = () => {
 
             </li>
 
+            <li className="nav-item">
+              <UserInfo />
+            </li>
+
             <div className="authentication">
               <div className="dropdown2 ">
                 <li className="nav-item dropdown">
@@ -53,16 +71,9 @@ const NavbarHome = () => {
                   <div className="dropdown-menu dropdown-menu-right border-dark" aria-labelledby="navbarDropdownMenuLink">
                     <a className="dropdown-item" href="#">
                       <div className="registration">
-
+                        <Register />
                       </div>
                     </a>
-
-                    <a className="dropdown-item" href="#">
-
-                      <Navbar />
-
-                    </a>
-
                   </div>
 
                 </li>
@@ -77,8 +88,13 @@ const NavbarHome = () => {
                   <div className="dropdown-menu border-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a className="dropdown-item" href="#">
                       <div className="login">
+                        <Login />
+                      </div>
 
-
+                      <div className="logout">
+                        <button onClick={Logout} className="button is-light">
+                          Log Out
+                        </button>
                       </div>
                     </a>
 
