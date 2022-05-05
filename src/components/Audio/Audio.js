@@ -136,15 +136,27 @@ export default class Audio extends Component {
             .getMp3()
 
             .then(([buffer, blob]) => {
-
                 const blobURL = URL.createObjectURL(blob)
-
                 this.setState({ blobURL, isRecording: false });
-
                 this.setState({ isRecordingStp: true });
-
+                return this.blobToBase64(blob)
+            })
+            .then(b64 => {
+                const jsonString = JSON.stringify({ blob: b64 });
+                console.log('result of blob to string is:')
+                console.log(jsonString);
             }).catch((e) => console.log(e));
 
+    };
+
+    blobToBase64 = (blob) => {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function () {
+                resolve(reader.result);
+            };
+        });
     };
 
     reset() {
