@@ -47,14 +47,13 @@ const Records = () => {
             <tr>
                 <th scope="row "></th>
                 <td>{r.filename}</td>
-                <td>BOUTON PLAY</td>
-                <td>DELETE</td>
+
                 <td>
                     <audio controls="controls">
                         <source src={r.blob} type="audio/mp3" />
                     </audio>
                 </td>
-                <td>CONTACT</td>
+
             </tr>
         )
     })

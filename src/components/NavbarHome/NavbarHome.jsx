@@ -91,13 +91,13 @@ const NavbarHome = () => {
                         <Login />
                       </div>
 
-                      <div className="logout">
-                        <button onClick={Logout} className="button is-light">
-                          Log Out
-                        </button>
-                      </div>
-                    </a>
 
+
+
+                    </a>
+                    <button onClick={Logout} className="button is-light">
+                      Log Out
+                    </button>
                   </div>
                 </li>
               </div>

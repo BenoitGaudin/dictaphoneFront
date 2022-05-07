@@ -4,6 +4,9 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
 
+
+import 'animate.css';
+
 const UserInfo = () => {
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
@@ -46,8 +49,8 @@ const UserInfo = () => {
     });
 
     return (
-        <div className="container mt-5">
-            <h1>Hello {name}!</h1>
+        <div className="nameInfo text-secondary animate__animated animate__bounceIn ">
+            <h1>{name}</h1>
         </div>
     )
 }
