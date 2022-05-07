@@ -8,16 +8,6 @@ import Login from "../Login";
 import UserInfo from "../UserInfo";
 
 
-
-
-
-
-
-
-
-
-
-
 const NavbarHome = () => {
 
   const history = useNavigate();
@@ -30,8 +20,6 @@ const NavbarHome = () => {
       console.log(error);
     }
   }
-
-
   return (
     <div className="navbarHome">
       <nav className="navbar navbar-expand-lg navbar-light ">
@@ -69,11 +57,11 @@ const NavbarHome = () => {
                     SIGN IN
                   </a>
                   <div className="dropdown-menu dropdown-menu-right border-dark" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="#">
-                      <div className="registration">
-                        <Register />
-                      </div>
-                    </a>
+
+                    <div className="registration">
+                      <Register />
+                    </div>
+
                   </div>
 
                 </li>
@@ -86,15 +74,10 @@ const NavbarHome = () => {
                     LOGIN
                   </a>
                   <div className="dropdown-menu border-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="#">
-                      <div className="login">
-                        <Login />
-                      </div>
 
 
+                    <Login />
 
-
-                    </a>
                     <button onClick={Logout} className="button is-light">
                       Log Out
                     </button>

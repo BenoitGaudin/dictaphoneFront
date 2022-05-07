@@ -1,30 +1,19 @@
-import React, { Component } from "react"
+import React, { useEffect, useState } from "react"
 import "./Audio.css";
 import MicRecorder from 'mic-recorder-to-mp3';
 import axios from "axios";
 
-const Mp3Recorder = new MicRecorder({ bitRate: 128 });
+const Mp3Recorder = new MicRecorder({ bitRate: 320 });
 
-export default class Audio extends Component {
-    constructor(props) {
-        super(props);
-        /*    
-         * declare states that will enable and disable  
-         * buttons that controls the audio widget
-         */
-        this.state = {
-            isRecording: false,
-            blobURL: '',
-            isBlocked: false,
-            isRecordingStp: false,
-        }
-        //binds the methods to the component
-        this.start = this.start.bind(this);
-        this.stop = this.stop.bind(this);
-        this.reset = this.reset.bind(this);
-    }
-    componentDidMount() {
-        //Prompt the user for permission to allow audio device in browser
+const Audio = () => {
+    const [isRecording, setIsRecording] = useState(false);
+    const [blobURL, setBlobURL] = useState('');
+    const [authorize, setAuthorize] = useState(true);
+    const [isRecordingStp, setIsRecordingStp] = useState(false);
+
+
+
+    useEffect(() => {
         navigator.getUserMedia = (
             navigator.getUserMedia ||
             navigator.webkitGetUserMedia ||
@@ -33,33 +22,31 @@ export default class Audio extends Component {
         );
         //Detects the action on user click to allow or deny permission of audio device
         navigator.getUserMedia({ audio: true },
-            () => {
-                console.log('Permission Granted');
-                this.setState({ isBlocked: false });
-            },
-            () => {
-                console.log('Permission Denied');
-                this.setState({ isBlocked: true })
-            },
+            //'Permission Granted
+            () => { setAuthorize(true) },
+            //'Permission Denied'
+            () => { setAuthorize(false) }
         );
-    }
-    start() {
-        /*  
+
+    }, []);
+
+    const start = () => {
+        /*
          * If the user denys permission to use the audio device
          * in the browser no recording can be done and an alert is shown
          * If the user allows permission the recoding will begin
          */
-        if (this.state.isBlocked) {
+        if (!authorize) {
             alert('Permission Denied');
         } else {
             Mp3Recorder
                 .start()
                 .then(() => {
-                    this.setState({ isRecording: true });
+                    setIsRecording(true)
                 }).catch((e) => console.error(e));
         }
-    }
-    stop() {
+    };
+    const stop = () => {
         let blobToBase64 = (blob) => {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -69,60 +56,52 @@ export default class Audio extends Component {
                 };
             });
         };
-
-
-
         let storeRecord = (filename, buffer) => {
             return axios.post('http://localhost:3000/record', {
                 filename: filename,
                 buffer: buffer
             })
         }
-
-        /*
-        * Once the recoding starts the stop button is activated
-        * Click stop once recording as finished  
-        * An MP3 is generated for the user to download the audio
-        */
         Mp3Recorder
             .stop()
             .getMp3()
             .then(([buffer, blob]) => {
                 const blobURL = URL.createObjectURL(blob)
-                this.setState({ blobURL, isRecording: false });
-                this.setState({ isRecordingStp: true });
+                setBlobURL(blobURL)
+                setIsRecording(false)
+                setIsRecordingStp(true)
                 return blobToBase64(blob)
             })
             .then(b64 => {
-                let body = { filename: 'record.mp3', buffer: b64 }
-                const jsonString = JSON.stringify(body);
-                console.log('result of blob to string is:')
-                console.log(jsonString);
+                const today = new Date();
+
+                let body = { filename: `${today}.mp3`, buffer: b64 }
+                JSON.stringify(body);
                 return storeRecord(body.filename, body.buffer)
             })
             .catch((e) => console.log(e));
     };
-
-    reset() {
-        /*    
-         * The user can reset the audio recording  
-         * once the stop button is clicked    
+    const reset = () => {
+        /*
+         * The user can reset the audio recording
+         * once the stop button is clicked
          */
         document.getElementsByTagName('audio')[0].src = '';
-        this.setState({ isRecordingStp: false });
+        setIsRecordingStp(false)
     };
-    render() {
-        //display view of audio widget and control buttons
-        return (
-            <div className="row d-flex justify-content-center mt-5 ">
-                <div className="start">
-                    <button className="btn btn-light border-dark" onClick={this.start} disabled={this.state.isRecording}>RECORD</button></div>
-                <div className="stop">
-                    <button className="btn btn-light border-dark" onClick={this.stop} disabled={!this.state.isRecording}>STOP</button></div>
-                <div className="reset">
-                    <button className="btn btn-light border-dark" onClick={this.reset} disabled={!this.state.isRecordingStp}>RESET</button></div>
-                <audio src={this.state.blobURL} controls="controls" />
-            </div >
-        );
-    }
+    return (
+
+        <div className="row d-flex justify-content-center mt-5 ">
+            <div className="buttonRecord">
+                <button className="btn btn-light border-dark" onClick={start} disabled={isRecording}>RECORD</button></div>
+            <div className="buttonRecord">
+                <button className="btn btn-light border-dark" onClick={stop} disabled={!isRecording}>STOP</button></div>
+            <div className="buttonRecord">
+                <button className="btn btn-light border-dark" onClick={reset} disabled={!isRecordingStp}>RESET</button></div>
+            <audio src={blobURL} controls="controls" />
+        </div >
+
+
+    )
 }
+export default Audio

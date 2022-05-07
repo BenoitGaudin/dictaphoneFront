@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [name, setName] = useState('');
@@ -11,20 +13,34 @@ const Register = () => {
     const history = useNavigate();
 
     const Register = async (e) => {
+
         e.preventDefault();
-        try {
-            await axios.post('http://localhost:3000/users', {
-                name: name,
-                email: email,
-                password: password,
-                confPassword: confPassword
-            });
+        /*try {
+         
             history.push("/");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
             }
-        }
+        }*/
+        axios.post('http://localhost:3000/users', {
+            name: name,
+            email: email,
+            password: password,
+            confPassword: confPassword
+        })
+            .then(function (response) {
+                console.log('test', response.status)
+                if (response.status === 200) {
+                    toast.success('user create')
+                }
+
+
+            })
+            .catch(function (error) {
+                toast.error('user create')
+                console.log(error);
+            });
     }
 
     return (
@@ -62,6 +78,7 @@ const Register = () => {
                                 </div>
                                 <div className="field mt-5">
                                     <button className="button is-success is-fullwidth">SIGN IN</button>
+                                    <ToastContainer />
                                 </div>
                             </form>
 
@@ -70,6 +87,7 @@ const Register = () => {
                 </div>
             </div>
         </section>
+
     )
 }
 

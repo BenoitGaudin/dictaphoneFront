@@ -27,6 +27,7 @@ const UserInfo = () => {
         } catch (error) {
             if (error.response) {
                 history.push("/");
+                console.log(error)
             }
         }
     }
@@ -35,6 +36,7 @@ const UserInfo = () => {
 
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
+        console.log("user")
         if (expire * 1000 < currentDate.getTime()) {
             const response = await axios.get('http://localhost:3000/token');
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;

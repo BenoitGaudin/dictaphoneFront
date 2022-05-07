@@ -16,22 +16,22 @@ const Records = () => {
         let response = await axios.get('http://localhost:3000/records')
         let recordsR = response.data
 
-        console.log('records:', recordsR)
+
 
         let recordsAsMp3 = await Promise.all(recordsR.map(async r => {
-            console.log('converting to blob', r)
+
 
             let blob = await b64toBlob(r.buffer)
             console.log('converted', blob)
             let url = window.URL.createObjectURL(blob)
-            console.log(url)
+
             return {
                 filename: r.filename,
                 blob: url
             }
         }))
 
-        console.log('recordsAsMp3', recordsAsMp3)
+
 
         setRecords(recordsAsMp3)
     }
