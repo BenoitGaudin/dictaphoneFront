@@ -11,8 +11,6 @@ const Audio = () => {
     const [authorize, setAuthorize] = useState(true);
     const [isRecordingStp, setIsRecordingStp] = useState(false);
 
-
-
     useEffect(() => {
         navigator.getUserMedia = (
             navigator.getUserMedia ||
@@ -20,22 +18,18 @@ const Audio = () => {
             navigator.mozGetUserMedia ||
             navigator.msGetUserMedia
         );
-        //Detects the action on user click to allow or deny permission of audio device
+
         navigator.getUserMedia({ audio: true },
-            //'Permission Granted
+
             () => { setAuthorize(true) },
-            //'Permission Denied'
+
             () => { setAuthorize(false) }
         );
 
     }, []);
 
     const start = () => {
-        /*
-         * If the user denys permission to use the audio device
-         * in the browser no recording can be done and an alert is shown
-         * If the user allows permission the recoding will begin
-         */
+
         if (!authorize) {
             alert('Permission Denied');
         } else {
@@ -82,10 +76,7 @@ const Audio = () => {
             .catch((e) => console.log(e));
     };
     const reset = () => {
-        /*
-         * The user can reset the audio recording
-         * once the stop button is clicked
-         */
+
         document.getElementsByTagName('audio')[0].src = '';
         setIsRecordingStp(false)
     };
@@ -100,8 +91,6 @@ const Audio = () => {
                 <button className="btn btn-light border-dark" onClick={reset} disabled={!isRecordingStp}>RESET</button></div>
             <audio src={blobURL} controls="controls" />
         </div >
-
-
     )
 }
 export default Audio

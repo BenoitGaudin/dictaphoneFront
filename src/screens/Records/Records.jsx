@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import NavbarRecords from '../../components/NavbarRecords/NavbarRecords';
 import './Records.css'
 
-
-
 const Records = () => {
 
     const [records, setRecords] = useState([]);
@@ -15,8 +13,6 @@ const Records = () => {
     let getRecords = async () => {
         let response = await axios.get('http://localhost:3000/records')
         let recordsR = response.data
-
-
 
         let recordsAsMp3 = await Promise.all(recordsR.map(async r => {
 
@@ -30,8 +26,6 @@ const Records = () => {
                 blob: url
             }
         }))
-
-
 
         setRecords(recordsAsMp3)
     }

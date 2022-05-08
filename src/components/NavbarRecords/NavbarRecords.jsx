@@ -13,8 +13,6 @@ const NavbarRecords = () => {
                     <Link to="/">
                         <button type="button" className="btn "> RETURN </button>
                     </Link>
-
-
                 </button>
                 <div class="col-7 text-light text-center">
                     YOUR RECORDS
@@ -22,9 +20,6 @@ const NavbarRecords = () => {
 
             </div>
         </div>
-
-
-
 
     );
 };
