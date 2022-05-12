@@ -7,7 +7,6 @@ import axios from 'axios';
 import Login from "../Login";
 import UserInfo from "../UserInfo";
 
-
 const NavbarHome = () => {
 
   const history = useNavigate();
@@ -41,15 +40,11 @@ const NavbarHome = () => {
                   <Link to="settings">
                     <button type="button" className="btn "> SETTINGS </button>
                   </Link></a>
-
               </div>
-
             </li>
-
             <li className="nav-item">
               <UserInfo />
             </li>
-
             <div className="authentication">
               <div className="dropdown2 ">
                 <li className="nav-item dropdown">
@@ -66,18 +61,13 @@ const NavbarHome = () => {
 
                 </li>
               </div>
-
-
               <div className="dropdown3">
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle-ls text-dark  " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
                     LOGIN
                   </a>
                   <div className="dropdown-menu border-dark dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-
-
                     <Login />
-
                     <button onClick={Logout} className="button is-light">
                       Log Out
                     </button>

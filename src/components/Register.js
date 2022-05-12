@@ -34,15 +34,12 @@ const Register = () => {
                 if (response.status === 200) {
                     toast.success('user create')
                 }
-
-
             })
             .catch(function (error) {
                 toast.error('user create')
                 console.log(error);
             });
     }
-
     return (
         <section className="hero has-background-grey-light is-fullheight is-fullwidth">
             <div className="hero-body">
@@ -81,14 +78,11 @@ const Register = () => {
                                     <ToastContainer />
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     )
 }
-
 export default Register
