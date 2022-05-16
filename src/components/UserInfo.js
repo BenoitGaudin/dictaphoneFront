@@ -21,6 +21,7 @@ const UserInfo = () => {
             const response = await axios.get('http://localhost:3000/token', { withCredentials: true });
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
+            console.log(decoded)
             setName(decoded.name);
             setExpire(decoded.exp);
         } catch (error) {
@@ -41,6 +42,7 @@ const UserInfo = () => {
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
+            console.log('token', token)
             setName(decoded.name);
             setExpire(decoded.exp);
         }
