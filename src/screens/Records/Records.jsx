@@ -35,7 +35,6 @@ const Records = () => {
 
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
-        console.log("user")
         if (expire * 1000 < currentDate.getTime()) {
             const response = await axios.get('http://localhost:3000/token', { withCredentials: true });
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
