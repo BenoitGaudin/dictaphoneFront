@@ -13,7 +13,9 @@ const NavbarHome = () => {
 
   const Logout = async () => {
     try {
-      await axios.delete('/logout');
+      await axios.delete('http://localhost:3000/logout', {
+        withCredentials: true
+      });
       history.push("/");
     } catch (error) {
       console.log(error);
