@@ -9,7 +9,6 @@ const Login = () => {
     const history = useNavigate();
 
     const Auth = async (e) => {
-        alert('doing auth')
         e.preventDefault();
         try {
             await axios.post('http://localhost:3000/login', {
