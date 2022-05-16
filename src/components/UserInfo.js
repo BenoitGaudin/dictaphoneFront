@@ -38,7 +38,7 @@ const UserInfo = () => {
         const currentDate = new Date();
         console.log("user")
         if (expire * 1000 < currentDate.getTime()) {
-            const response = await axios.get('http://localhost:3000/token');
+            const response = await axios.get('http://localhost:3000/token', { withCredentials: true });
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
