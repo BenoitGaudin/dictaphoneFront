@@ -9,6 +9,7 @@ const Login = () => {
     const history = useNavigate();
 
     const Auth = async (e) => {
+        alert('doing auth')
         e.preventDefault();
         try {
             await axios.post('http://localhost:3000/login', {
@@ -31,7 +32,7 @@ const Login = () => {
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
-                            <form className="box">
+                            <form onSubmit={Auth} className="box">
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
                                     <label className="label">Email or Username</label>
