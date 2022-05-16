@@ -3,7 +3,7 @@ import "./Audio.css";
 import MicRecorder from 'mic-recorder-to-mp3';
 import axios from "axios";
 
-const Mp3Recorder = new MicRecorder({ bitRate: 320 });
+const Mp3Recorder = new MicRecorder({ bitRate: 96 });
 
 const Audio = () => {
     const [isRecording, setIsRecording] = useState(false);
@@ -69,7 +69,7 @@ const Audio = () => {
             .then(b64 => {
                 const today = new Date();
 
-                let body = { filename: `${today}.mp3`, buffer: b64 }
+                let body = { filename: `${today.toISOString()}.mp3`, buffer: b64 }
                 JSON.stringify(body);
                 return storeRecord(body.filename, body.buffer)
             })
