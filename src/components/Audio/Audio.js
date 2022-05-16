@@ -70,27 +70,23 @@ const Audio = () => {
 
 function encodeAndStore(blob) {
     const filename = `${new Date().toISOString()}.mp3`;
-    blobToBase64(blob).then(b64 => {
-        let body = { filename: filename, buffer: b64 }
-        return storeRecord(body.filename, body.buffer)
-    })
+    blobToBase64(blob)
+        .then(b64 => storeRecord(filename, b64))
 }
 
-let blobToBase64 = (blob) => {
-    return new Promise((resolve) => {
+let blobToBase64 = (blob) =>
+    new Promise((resolve) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function () {
             resolve(reader.result);
         };
     });
-};
 
-let storeRecord = (filename, buffer) => {
-    return axios.post('http://localhost:3000/record', {
+let storeRecord = (filename, buffer) =>
+    axios.post('http://localhost:3000/record', {
         filename: filename,
         buffer: buffer
     })
-}
 
 export default Audio
