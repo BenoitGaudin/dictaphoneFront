@@ -49,26 +49,26 @@ const Register = () => {
                             <form onSubmit={Register} className="box">
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Name</label>
+                                    <label className="label">NAME</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name"
                                             value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Email</label>
+                                    <label className="label">EMAIL</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Password</label>
+                                    <label className="label">PASSWORD</label>
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Confirm Password</label>
+                                    <label className="label">CONFIRM PASSWORD</label>
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
                                     </div>

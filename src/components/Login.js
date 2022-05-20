@@ -34,13 +34,13 @@ const Login = () => {
                             <form onSubmit={Auth} className="box">
                                 <p className="has-text-centered">{msg}</p>
                                 <div className="field mt-5">
-                                    <label className="label">Email or Username</label>
+                                    <label className="label">EMAIL</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="field mt-5">
-                                    <label className="label">Password</label>
+                                    <label className="label">PASSWORD</label>
                                     <div className="controls">
                                         <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </div>
