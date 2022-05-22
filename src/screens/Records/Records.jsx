@@ -56,8 +56,6 @@ const Records = () => {
         let recordsR = response.data
 
         let recordsAsMp3 = await Promise.all(recordsR.map(async r => {
-
-
             let blob = await b64toBlob(r.buffer)
             console.log('converted', blob)
             let url = window.URL.createObjectURL(blob)
@@ -75,20 +73,16 @@ const Records = () => {
         getRecords();
     }, []);
 
-    let recordsElems = records.map(r => {
-        console.log('r', r);
+    let recordsElems = records.map(record => {
         return (
-
             <tr>
                 <th scope="row "></th>
-                <td>{r.filename}</td>
-
+                <td> enregistré le {record.filename}</td>
                 <td>
                     <audio controls="controls">
-                        <source src={r.blob} type="audio/mp3" />
+                        <source src={record.blob} type="audio/mp3" />
                     </audio>
                 </td>
-
             </tr>
         )
     })

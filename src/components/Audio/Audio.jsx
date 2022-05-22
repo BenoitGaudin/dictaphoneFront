@@ -24,9 +24,7 @@ const Audio = () => {
         try {
             const response = await axios.get('http://localhost:3000/token', { withCredentials: true });
             setToken(response.data.accessToken);
-            console.log('stored token during refresh', response.data.accessToken)
             const decoded = jwt_decode(response.data.accessToken);
-            console.log(decoded)
             setExpire(decoded.exp);
         } catch (error) {
             if (error.response) {
@@ -40,7 +38,7 @@ const Audio = () => {
 
     axiosJWT.interceptors.request.use(async (config) => {
         const currentDate = new Date();
-        if (expire * 1000 < currentDate.getTime()) {
+        if (expire * 100000000000000000000000 < currentDate.getTime()) {
             const response = await axios.get('http://localhost:3000/token', { withCredentials: true });
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
