@@ -11,7 +11,7 @@ const LegalNotice = () => {
     return (
         <div>
 
-            <div class="text-center">
+            <div className="text-center">
                 <Link to="/">
                     <button type="button" class="big-logo btn -lg " >dictaphone</button>
                 </Link>

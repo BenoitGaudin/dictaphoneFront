@@ -90,7 +90,7 @@ const Records = () => {
     return (
         <div>
             <NavbarRecords />
-            <table class="table table border border-dark">
+            <table className="table table border border-dark">
                 <tbody>
                     {recordsElems}
                 </tbody>
